@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* Custom Color Palette: White, Olive, Rust */
+@theme {
+  --color-white: #ffffff;
+  --color-offwhite: #faf9f6;
+  --color-cream: #f5f3ef;
+
+  /* Olive shades */
+  --color-olive-50: #f7f8f4;
+  --color-olive-100: #eef0e7;
+  --color-olive-200: #dde1ce;
+  --color-olive-300: #c3cab0;
+  --color-olive-400: #a5af8a;
+  --color-olive-500: #8b9968;
+  --color-olive-600: #6b7a4b;
+  --color-olive-700: #556140;
+  --color-olive-800: #454f37;
+  --color-olive-900: #3b4330;
+  --color-olive-950: #1e231a;
+
+  /* Rust shades */
+  --color-rust-50: #fdf6f3;
+  --color-rust-100: #fbeae4;
+  --color-rust-200: #f8d5c9;
+  --color-rust-300: #f2b6a1;
+  --color-rust-400: #e98c6f;
+  --color-rust-500: #d86c4a;
+  --color-rust-600: #c4512f;
+  --color-rust-700: #a44226;
+  --color-rust-800: #873923;
+  --color-rust-900: #703422;
+  --color-rust-950: #3c190f;
+
+  /* Neutral shades */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
+}
+
+/* Base Styles */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, sans-serif;
+  background-color: var(--color-offwhite);
+  color: var(--color-stone-800);
+  line-height: 1.6;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(196, 81, 47, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(196, 81, 47, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(59, 67, 48, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-olive-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-olive-600);
+}
+
+/* Focus Styles */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 2px solid var(--color-rust-400);
+  outline-offset: 2px;
+}
+
+/* Link Hover Effect */
+.link-hover {
+  position: relative;
+}
+
+.link-hover::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-rust-500),
+    var(--color-olive-500)
+  );
+  transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
