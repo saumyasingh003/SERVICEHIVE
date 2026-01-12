@@ -4,12 +4,12 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { connectDB } from "./config/db.js";
+import { connectDB } from "../src/config/db.js";
 
 // Route imports
-import authRoutes from "./routes/authRoutes.js";
-import gigRoutes from "./routes/gigRoutes.js";
-import bidRoutes from "./routes/bidRoutes.js";
+import authRoutes from "../src/routes/authRoutes.js";
+import gigRoutes from "../src/routes/gigRoutes.js";
+import bidRoutes from "../src/routes/bidRoutes.js";
 
 dotenv.config();
 
@@ -108,20 +108,20 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-  try {
-    await connectDB();
-    httpServer.listen(PORT, () =>
-      console.log(`✅ ServiceHive API running at: ${PORT}`)
-    );
-  } catch (err) {
-    console.error("❌ Failed to connect to DB", err);
-    process.exit(1);
-  }
-};
+// const startServer = async () => {
+//   try {
+//     await connectDB();
+//     httpServer.listen(PORT, () =>
+//       console.log(`✅ ServiceHive API running at: ${PORT}`)
+//     );
+//   } catch (err) {
+//     console.error("❌ Failed to connect to DB", err);
+//     process.exit(1);
+//   }
+// };
 
-startServer();
+// startServer();
 
 export { io };
